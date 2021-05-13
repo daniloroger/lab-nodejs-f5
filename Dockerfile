@@ -1,9 +1,9 @@
 FROM node:alpine
 MAINTAINER Lab for BIG-IP CIS
-ENV NODE_ENV=production
-COPY /files /var/www
-WORKDIR /var/www
+ENV NODE_ENV=lab
+WORKDIR /usr/src/app
+COPY /files/package*.json ./
+COPY /files /usr/src/app
 RUN npm install
-ENTRYPOINT ["npm"]
-CMD ["start"]
 EXPOSE 8080
+CMD ["node", "app.js"]
